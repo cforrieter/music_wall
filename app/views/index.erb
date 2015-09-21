@@ -1,11 +1,13 @@
-<h1>Home Page</h1>
-<hr>
+<h1 class="center-align">Song index</h1>
+<div class="divider"></div>
 <% @songs.each do |song| %>
-  <h2><%= song.name %></h2>
-  <h4>By: <%=song.author %></h4>
-  <% unless song.url.empty? %>
-    <iframe width="560" height="315" src="https://www.youtube.com/v/<%= song.url %>" frameborder="0" allowfullscreen></iframe>
-  <% end %>
-  <hr>
+  <div class='row'>
+    <h4 class="teal-text text-lighten-3 center-align"><%= song.name %></h4>
+    <h5 class="teal-text text-lighten-4 center-align">By: <%=song.author %></h5>
+    <div class="col s6 offset-s3">
+      <iframe width="560" height="315" src="https://www.youtube.com/v/<%= song.url %>" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <div class="divider"></div>
 <% end %>
 <p><a href="/new">Add a song</a></p>
