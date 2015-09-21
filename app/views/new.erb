@@ -2,7 +2,9 @@
   <h3>There are some issues with your submission:</h3>
   <ul>
   <% @song.errors.full_messages.each do |error| %>
-    <li> <i class="material-icons">trending_flat</i><%= error %></li>
+    <div class='row'>
+      <li class="col s6 offset-s1"><%= error %></li>
+    </div>
   <% end %>  
   </ul>
 <% else %>
