@@ -1,6 +1,6 @@
 # Homepage (Root path)
 get '/' do
-  @songs = Song.all
+  @songs = Song.all.order(score: :desc)
   erb :index
 end
 
@@ -23,7 +23,7 @@ get '/users/logout' do
 end
 
 post '/song/create' do
-  @song = Song.new(name: params[:name], author: params[:author], url: params[:url])
+  @song = Song.new(name: params[:name], author: params[:author], url: params[:url], user_id: session[:user].id)
   if @song.save
     redirect '/'
   else

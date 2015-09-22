@@ -2,8 +2,9 @@ class Song < ActiveRecord::Base
   has_many :votes
 
   validates :name, :author, presence: true
-  validates :url, format: { with: /https?:\/\/(?:www)?\.?youtube/, message: "must be link from YouTube."}
-  validate :youtube_validation
+  # validates :url, format: { with: /https?:\/\/(?:www)?\.?youtube/, message: "must be link from YouTube."}
+  
+  before_create :youtube_validation
 
   def youtube_validation
     unless url.empty?
