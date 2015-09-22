@@ -1,5 +1,8 @@
 $(document).ready(function() {
-  $('i').click(function() {
+  $('.stars').raty({ scoreName: 'review_rating' });
+
+  $('select').material_select();
+  $("i:contains('thumb_up')").click(function() {
     var id = this.id
     var elem = this
     $.ajax({

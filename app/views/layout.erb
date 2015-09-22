@@ -21,11 +21,13 @@
 <body>
   <nav>
     <div class="nav-wrapper teal lighten-2">
+      <ul class="left hide-on-med-and-down">
       <% if session[:user] %>
-        <ul class="left hide-on-med-and-down">
-          <li>Hello, <%= session[:user].name %></li>
-        </ul>
-        <% end %>
+        <li>Hello, <%= session[:user].name %></li>
+      <% else %>
+        <li>Hello, guest</li>
+      <% end %>
+      </ul>
       <a href="/" class="brand-logo center">Music Wall</a>
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -44,5 +46,6 @@
   </div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="/javascript/materialize.min.js"></script>
+  <script type="text/javascript" src="/javascript/jquery.raty.js"></script>
 </body>
 </html>

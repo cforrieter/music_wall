@@ -22,6 +22,11 @@ get '/users/logout' do
   redirect '/'
 end
 
+get '/songs/show/:id' do
+  @song = Song.find(params[:id])
+  erb :'/songs/show'
+end
+
 post '/song/create' do
   @song = Song.new(name: params[:name], author: params[:author], url: params[:url], user_id: session[:user])
   if @song.save
@@ -62,5 +67,27 @@ get '/users/upvote/:id' do
     end
     @voted.save
   end
+end
 
+post '/songs/show/:id/review/create' do
+  @voted = Vote.where("user_id = ? AND song_id = ?", session[:user].id, params[:id]).first
+  unless @voted
+    session[:user].votes.create(song_id: params[:id], review: params[:review], review_rating: params[:review_rating])
+  else
+    @voted.review = params[:review]
+    @voted.review_rating = params[:review_rating].to_i
+    @voted.save
+  end
+
+  redirect "/songs/show/#{params[:id]}"
+end
+
+get '/songs/show/:id/review/delete' do
+  @voted = Vote.find_by(user_id: session[:user].id, song_id: params[:id])
+  if @voted
+    @voted.review = nil
+    @voted.review_rating = nil  
+    @voted.save
+  end
+  redirect "/songs/show/#{params[:id]}"
 end

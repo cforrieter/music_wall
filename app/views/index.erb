@@ -13,11 +13,11 @@
               <i class="medium material-icons grey-text left" id="<%= song.id %>">thumb_up</i>
             <% end %>
             <% end %>
-            <h4 class="left"><%= song.score %></h4>
+            <h4 class="left"><%= "#{song.score} " << (song.score.to_i == 1 ? 'point' : 'points') %></h4>
           </span>
           <div class="clearfix"></div>
           <div class="row">
-            <h2 class="teal-text text-lighten-4 center-align"><%= song.name %></h2>
+            <h2 class="teal-text text-lighten-4 center-align"><a href="/songs/show/<%= song.id %>"><%= song.name %></a></h2>
             <h5 class="teal-text text-lighten-4 center-align">
               <%=song.author %>
             </h5>
