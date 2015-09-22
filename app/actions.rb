@@ -23,7 +23,7 @@ get '/users/logout' do
 end
 
 post '/song/create' do
-  @song = Song.new(name: params[:name], author: params[:author], url: params[:url], user_id: session[:user].id)
+  @song = Song.new(name: params[:name], author: params[:author], url: params[:url], user_id: session[:user])
   if @song.save
     redirect '/'
   else
@@ -63,5 +63,4 @@ get '/users/upvote/:id' do
     @voted.save
   end
 
-  redirect '/'
 end
