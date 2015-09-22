@@ -1,0 +1,29 @@
+<h1>New user</h1>
+<form class="col s6" style="width:100%" method="post" action="/users/create">
+  <fieldset class="center">
+    <legend>Create an account</legend>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="name" name="name" type="text">
+        <label for="name">Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="email" name="email" type="text">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="password" name="password" type="text" >
+        <label for="password">Password</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="confirm_password" name="confirm_password" type="text" >
+        <label for="confirm_password">Confirm Password</label>
+      </div>
+    </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Login
+      <i class="material-icons right">send</i>
+    </button>
+  </fieldset>
+</form>

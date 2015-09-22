@@ -21,9 +21,21 @@
 <body>
   <nav>
     <div class="nav-wrapper teal lighten-2">
+      <% if session[:user] %>
+        <ul class="left hide-on-med-and-down">
+          <li>Hello, <%= session[:user].name %></li>
+        </ul>
+        <% end %>
       <a href="/" class="brand-logo center">Music Wall</a>
+
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/new">New song</a></li>
+        <% unless session[:user] %>
+          <li><a href="/users/login">Login</a></li>
+          <li><a href="/users/new">New User</a></li>
+        <% else %>
+          <li><a href="/users/logout">Logout</a></li>
+        <% end %>
       </ul>
     </div>
   </nav>
@@ -31,6 +43,6 @@
     <%= yield %>
   </div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="javascript/materialize.min.js"></script>
+  <script type="text/javascript" src="/javascript/materialize.min.js"></script>
 </body>
 </html>

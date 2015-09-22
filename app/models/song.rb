@@ -1,4 +1,6 @@
 class Song < ActiveRecord::Base
+  has_many :votes
+
   validates :name, :author, presence: true
   validates :url, format: { with: /https?:\/\/(?:www)?\.?youtube/, message: "must be link from YouTube."}
   validate :youtube_validation

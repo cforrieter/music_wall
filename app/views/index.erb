@@ -2,8 +2,15 @@
 <div class="divider"></div>
 <% @songs.each do |song| %>
   <div class='row'>
-    <h4 class="teal-text text-lighten-3 center-align"><%= song.name %></h4>
-    <h5 class="teal-text text-lighten-4 center-align">By: <%=song.author %></h5>
+    <h4 class="teal-text text-lighten-3 center-align">
+      <%= Vote.where("song_id = ? AND upvote = ?", song.id, true).count %>
+      <%= song.name %>
+    </h4>
+    <h5 class="teal-text text-lighten-4 center-align">
+    <% if session[:user] %>
+    <a href="/users/upvote/<%= song.id %>"><i class="large material-icons left">thumb_up</i></a>
+    <% end %>
+    By: <%=song.author %></h5>
     <div class="col s6 offset-s3">
       <iframe width="560" height="315" src="https://www.youtube.com/v/<%= song.url %>" frameborder="0" allowfullscreen></iframe>
     </div>
