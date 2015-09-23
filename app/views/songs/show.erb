@@ -9,7 +9,8 @@
           <% elsif @review %>
               <i class="medium material-icons grey-text left" id="<%= @song.id %>">thumb_up</i>
           <% end %>
-            <h4 class="left"><%= "#{@song.score} " << (@song.score.to_i == 1 ? 'point' : 'points') %></h4>
+            <h4 class="left"><%= @song.score %></h4>
+            <span style="line-height: 3.4em"><%= @song.score.to_i == 1 ? 'point' : 'points' %></span>
           </span>
           <div class="clearfix"></div>
           <div class="row">
